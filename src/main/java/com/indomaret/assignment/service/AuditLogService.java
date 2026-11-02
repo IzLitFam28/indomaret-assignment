@@ -13,9 +13,10 @@ public class AuditLogService {
     private final AuditLogRepository auditLogRepository;
     private final ObjectMapper objectMapper;
 
-    public AuditLogService(AuditLogRepository auditLogRepository, ObjectMapper objectMapper) {
+    public AuditLogService(AuditLogRepository auditLogRepository) {
         this.auditLogRepository = auditLogRepository;
-        this.objectMapper = objectMapper;
+        this.objectMapper = new ObjectMapper(); 
+        this.objectMapper.findAndRegisterModules();
     }
 
     public void logAction(String action, String entityName, Long entityId, Object payload) {
