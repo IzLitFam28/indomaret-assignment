@@ -1,3 +1,18 @@
 spring:
   application:
     name: backend-assignment
+
+  spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/indomaret
+    username: postgres 
+    password: dragonoid1st
+    driver-class-name: org.postgresql.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: validate 
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
