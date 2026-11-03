@@ -1,5 +1,6 @@
 package com.indomaret.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore; // Add this import
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
@@ -27,6 +28,8 @@ public class Province extends BaseEntity {
     @Column(nullable = false, length = 150)
     private String name;
 
+    @JsonIgnore
+    @Builder.Default
     @OneToMany(mappedBy = "province", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Branch> branches = new ArrayList<>();
 }

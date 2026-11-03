@@ -1,5 +1,6 @@
 package com.indomaret.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore; // Add this import
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
@@ -34,6 +35,8 @@ public class Branch extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String address;
 
+    @JsonIgnore
+    @Builder.Default
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Store> stores = new ArrayList<>();
 }
