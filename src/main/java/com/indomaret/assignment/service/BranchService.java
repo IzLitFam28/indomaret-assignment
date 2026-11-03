@@ -21,8 +21,8 @@ public class BranchService {
 
     @Transactional
     public Branch updateBranch(Long id, String name, String address, Boolean isActive) {
-        Branch branch = branchRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Branch not found with id: " + id));
+        Branch branch = branchRepository.findByIdForUpdate(id)
+                .orElseThrow(() -> new RuntimeException("Branch not found or is permanently deleted with id: " + id));
 
         if (name != null) branch.setName(name);
         if (address != null) branch.setAddress(address);
@@ -35,8 +35,8 @@ public class BranchService {
 
     @Transactional
     public void deleteBranch(Long id) {
-        Branch branch = branchRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Branch not found with id: " + id));
+        Branch branch = branchRepository.findByIdForUpdate(id)
+                .orElseThrow(() -> new RuntimeException("Branch not found or is permanently deleted with id: " + id));
 
         branch.setIsDeleted(true);
         branch.setIsActive(false);

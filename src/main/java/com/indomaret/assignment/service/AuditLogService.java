@@ -37,6 +37,7 @@ public class AuditLogService {
                 .entityName(entityName)
                 .entityId(entityId)
                 .changes(changesJson)
+                .createdAt(java.time.LocalDateTime.now())
                 .build();
 
         auditLogRepository.save(log);
