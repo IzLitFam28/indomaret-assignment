@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/indomaret
     username: postgres 
-    password: dragonoid1st
+    password: 
     driver-class-name: org.postgresql.Driver
   
   flyway:
